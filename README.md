@@ -4,9 +4,11 @@ Let everyone on Discord regularly see how your podcast is performing.
 
 # Installation & Usage
 
+Discord bots are run on a personal computer of your choice with internet access. An inexpensive ARM computer with Linux is recommended.
+
 ## Get the Code
 
-1. [Download & unzip](https://github.com/RobbyCBennett/DiscordBotAnchorAnalytics/archive/refs/heads/master.zip) or [clone](https://github.com/RobbyCBennett/DiscordBotAnchorAnalytics) this repository
+1. [Download & unzip](https://github.com/RobbyCBennett/DiscordBotAnchorAnalytics/archive/refs/heads/master.zip) or [clone](https://github.com/RobbyCBennett/DiscordBotAnchorAnalytics) this repository.
 
 2. Inside of this folder, copy the `.env.example` and name it `.env`
 
@@ -16,7 +18,7 @@ Let everyone on Discord regularly see how your podcast is performing.
 
 4. Install [pip](https://pip.pypa.io/en/stable/installation/)
 
-5. In the command line inside of this folder, type in one of the following.
+5. In the command line inside of this folder, type in one of the following commands.
 
 ```
 make install
@@ -45,3 +47,26 @@ sudo pip install python-dotenv aiohttp discord
 ## Anchor Credentials
 
 11. In the `.env` file, add your Anchor.fm email & password as `ANCHOR_EMAIL` and `ANCHOR_PASSWORD`.
+
+## Run the Bot
+
+12. Run the bot in the background by typing in one of the following commands.
+
+
+```
+make foreground
+```
+
+```
+python bot.py
+```
+
+You can alternatively run the bot in the foreground with one of the following commands.
+
+```
+make background
+```
+
+```
+nohup python bot.py </dev/null >/dev/null 2>&1 &
+```
