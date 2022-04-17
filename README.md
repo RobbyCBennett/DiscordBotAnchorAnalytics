@@ -48,9 +48,13 @@ sudo pip install python-dotenv aiohttp discord
 
 11. In the `.env` file, add your Anchor.fm email & password as `ANCHOR_EMAIL` and `ANCHOR_PASSWORD`.
 
+## Pick a Time
+
+12. In the `.env` file, choose a weekly time for the analytics to be retrieved and sent to Discord, and save it as `WEEKLY_TIME`.
+
 ## Run the Bot
 
-12. Run the bot in the background by typing in one of the following commands.
+13. Run the bot in the background by typing in one of the following commands.
 
 
 ```
