@@ -11,8 +11,8 @@ DISCORD_BOT_TOKEN = os.getenv('DISCORD_BOT_TOKEN')
 DISCORD_CHANNEL_ID = int(os.getenv('DISCORD_CHANNEL_ID'))
 ANCHOR_EMAIL = os.getenv('ANCHOR_EMAIL')
 ANCHOR_PASSWORD = os.getenv('ANCHOR_PASSWORD')
-PRINT_MESSAGES = os.getenv('PRINT_MESSAGES') and os.getenv('PRINT_MESSAGES').lower() in {'true', '1'}
-SEND_MESSAGES = os.getenv('SEND_MESSAGES') and os.getenv('SEND_MESSAGES').lower() in {'true', '1'}
+PRINT_MESSAGES_TO_CONSOLE = os.getenv('PRINT_MESSAGES_TO_CONSOLE') and os.getenv('PRINT_MESSAGES_TO_CONSOLE').lower() in {'true', '1'}
+SEND_MESSAGES_TO_DISCORD = os.getenv('SEND_MESSAGES_TO_DISCORD') and os.getenv('SEND_MESSAGES_TO_DISCORD').lower() in {'true', '1'}
 
 # Simple constants
 BASE_URL = 'https://anchor.fm/api/'
@@ -281,7 +281,7 @@ async def change_status():
 
 		# Send analytics
 
-		if PRINT_MESSAGES:
+		if PRINT_MESSAGES_TO_CONSOLE:
 			analyticsString = ''
 			for key, string in analytics.items():
 				title = stringTitle(key)
@@ -291,7 +291,7 @@ async def change_status():
 				analyticsString += string
 			print(analyticsString)
 
-		if SEND_MESSAGES:
+		if SEND_MESSAGES_TO_DISCORD:
 			for key, string in analytics.items():
 				title = stringTitle(key)
 				message = '{}```\n{}```'.format(title, string)
