@@ -1,5 +1,6 @@
 #! /usr/bin/python
 
+import asyncio
 import discord, aiohttp, os
 from discord.ext import commands, tasks
 from dotenv import load_dotenv
@@ -11,13 +12,15 @@ DISCORD_BOT_TOKEN = os.getenv('DISCORD_BOT_TOKEN')
 DISCORD_CHANNEL_ID = int(os.getenv('DISCORD_CHANNEL_ID'))
 ANCHOR_EMAIL = os.getenv('ANCHOR_EMAIL')
 ANCHOR_PASSWORD = os.getenv('ANCHOR_PASSWORD')
+WEEKLY_TIME = os.getenv('WEEKLY_TIME')
 PRINT_MESSAGES_TO_CONSOLE = os.getenv('PRINT_MESSAGES_TO_CONSOLE') and os.getenv('PRINT_MESSAGES_TO_CONSOLE').lower() in {'true', '1'}
 SEND_MESSAGES_TO_DISCORD = os.getenv('SEND_MESSAGES_TO_DISCORD') and os.getenv('SEND_MESSAGES_TO_DISCORD').lower() in {'true', '1'}
 
 # Simple constants
 BASE_URL = 'https://anchor.fm/api/'
 ANALYTICS_URL = BASE_URL + 'proxy/v3/analytics/station/webStationId:{}/{}'
-HOURS = 24 * 7
+HOURS_IN_A_WEEK = 168
+SECONDS_IN_A_WEEK = 604800
 
 # Objects for connections
 bot = commands.Bot(command_prefix='.')
@@ -148,10 +151,10 @@ def stringOfTopEpisodes(stats):
 
 @bot.event
 async def on_ready():
-	change_status.start()
+	get_analytics.start()
 
-@tasks.loop(hours=HOURS)
-async def change_status():
+@tasks.loop(hours=HOURS_IN_A_WEEK)
+async def get_analytics():
 
 	# Set up connection with Discord
 
@@ -296,5 +299,13 @@ async def change_status():
 				title = stringTitle(key)
 				message = '{}```\n{}```'.format(title, string)
 				await channel.send(message)
+
+@get_analytics.before_loop
+async def before_get_analytics():
+	for _ in range(SECONDS_IN_A_WEEK):
+		if datetime.utcnow().strftime('%H:%M UTC %a') == WEEKLY_TIME:
+			return
+
+		await asyncio.sleep(30)
 
 bot.run(DISCORD_BOT_TOKEN)
