@@ -1,0 +1,12 @@
+[Unit]
+Description=Discord Bot - Anchor Analytics
+After=network.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+Restart=always
+ExecStart=python /usr/local/src/discord-bot-anchor-analytics/bot.py
+
+[Install]
+WantedBy=multi-user.target
