@@ -38,19 +38,21 @@ wget https://bootstrap.pypa.io/get-pip.py && python get-pip.py && rm get-pip.py
    * See [this guide](https://discord.com/developers/docs/getting-started) for help with this process.
    * Don't name the app or the bot with the word "discord" in it.
 
-6. Get a new token with Bot > Build-A-Bot > Reset Token. Copy the token. In the `.env` file, this should be saved as `DISCORD_BOT_TOKEN`
+6. Get the application id with General Information > Application ID. Copy the id. In the `.env` file, this should be saved as `DISCORD_BOT_ID`
 
-7. Get a link to add your bot to the channel with OAuth2 > URL Generator.
+7. Get a new token with Bot > Build-A-Bot > Reset Token. Copy the token. In the `.env` file, this should be saved as `DISCORD_BOT_TOKEN`
+
+8. Get a link to add your bot to the channel with OAuth2 > URL Generator.
    * Under `SCOPES` select `bot`.
    * Under `BOT PERMISSIONS` select `Send Messages`.
 
-8. Send this link to someone in the Discord server who has permissions to add bots.
+9. Send this link to someone in the Discord server who has permissions to add bots.
 
-9. [Copy the Discord channel ID](https://support.discord.com/hc/en-us/articles/206346498-Where-can-I-find-my-User-Server-Message-ID-). In the `.env` file, this should be saved as `DISCORD_CHANNEL_ID`
+10. [Copy the Discord channel ID](https://support.discord.com/hc/en-us/articles/206346498-Where-can-I-find-my-User-Server-Message-ID-). In the `.env` file, this should be saved as `DISCORD_CHANNEL_ID`
 
 ## Anchor Credentials
 
-10. In the `.env` file, add your Anchor.fm email & password as `ANCHOR_EMAIL` and `ANCHOR_PASSWORD`.
+11. In the `.env` file, add your Anchor.fm email & password as `ANCHOR_EMAIL` and `ANCHOR_PASSWORD`.
 
 ## Pick a Time
 

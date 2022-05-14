@@ -1,14 +1,17 @@
-#! /usr/bin/python
+ #! /usr/bin/python
 
 import asyncio
 import discord, aiohttp, os
 from discord.ext import commands, tasks
 from dotenv import load_dotenv
 from datetime import datetime
+from phrases import phrases
+from random import randint
 
 # Enviroment variables
 load_dotenv()
 DISCORD_BOT_TOKEN = os.getenv('DISCORD_BOT_TOKEN')
+DISCORD_BOT_ID = int(os.getenv('DISCORD_BOT_ID'))
 DISCORD_CHANNEL_ID = int(os.getenv('DISCORD_CHANNEL_ID'))
 ANCHOR_EMAIL = os.getenv('ANCHOR_EMAIL')
 ANCHOR_PASSWORD = os.getenv('ANCHOR_PASSWORD')
@@ -149,9 +152,9 @@ def stringOfTopEpisodes(stats):
 
 # Bot functions
 
-@bot.event
-async def on_ready():
-	get_analytics.start()
+# @bot.event
+# async def on_ready():
+# 	get_analytics.start()
 
 @tasks.loop(hours=HOURS_IN_A_WEEK)
 async def get_analytics():
@@ -307,5 +310,26 @@ async def before_get_analytics():
 			return
 
 		await asyncio.sleep(30)
+
+@bot.event
+async def on_message(message):
+	def randomPhrase():
+		return phrases[randint(0, len(phrases)-1)]
+
+	channel = message.channel
+
+	# Member mention
+	for member in message.mentions:
+		if member.id == DISCORD_BOT_ID:
+			await channel.send(randomPhrase())
+			return
+
+	# Role mention
+	for role in message.role_mentions:
+		for member in role.members:
+			if member.id == DISCORD_BOT_ID:
+				await channel.send(randomPhrase())
+				return
+		return
 
 bot.run(DISCORD_BOT_TOKEN)
