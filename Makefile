@@ -13,3 +13,6 @@ install: python-exists pip-exists
 	sudo systemctl daemon-reload
 	sudo systemctl enable discord-bot-anchor-analytics
 	sudo systemctl start discord-bot-anchor-analytics
+
+restart:
+	sudo systemctl start discord-bot-anchor-analytics
