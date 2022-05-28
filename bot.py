@@ -152,9 +152,9 @@ def stringOfTopEpisodes(stats):
 
 # Bot functions
 
-# @bot.event
-# async def on_ready():
-# 	get_analytics.start()
+@bot.event
+async def on_ready():
+	get_analytics.start()
 
 @tasks.loop(hours=HOURS_IN_A_WEEK)
 async def get_analytics():
@@ -308,11 +308,6 @@ async def before_get_analytics():
 	for _ in range(SECONDS_IN_A_WEEK):
 		if datetime.utcnow().strftime('%H:%M UTC %a') == WEEKLY_TIME:
 			return
-		else:
-			print('Current time:')
-			print(datetime.utcnow().strftime('%H:%M UTC %a'))
-			print('Target time:')
-			print(WEEKLY_TIME)
 
 		await asyncio.sleep(30)
 
