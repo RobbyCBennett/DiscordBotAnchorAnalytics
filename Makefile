@@ -7,8 +7,8 @@ pip-exists:
 install: python-exists pip-exists
 	pip install --upgrade pip
 	pip install python-dotenv aiohttp discord
-	if [ $PWD = /usr/local/src/discord-bot-anchor-analytics ] ; then
-		sudo cp -r . /usr/local/src/discord-bot-anchor-analytics
+	@if [ $PWD = /usr/local/src/discord-bot-anchor-analytics ] ; then\
+		sudo cp -r . /usr/local/src/discord-bot-anchor-analytics\
 	fi
 	cd /usr/local/src/discord-bot-anchor-analytics
 	sudo cp discord-bot-anchor-analytics.service /etc/systemd/system/discord-bot-anchor-analytics.service
@@ -17,8 +17,8 @@ install: python-exists pip-exists
 	sudo systemctl start discord-bot-anchor-analytics
 
 update:
-	if [ $PWD = /usr/local/src/discord-bot-anchor-analytics ] ; then
-		sudo cp -r . /usr/local/src/discord-bot-anchor-analytics
+	@if [ $PWD = /usr/local/src/discord-bot-anchor-analytics ] ; then\
+		sudo cp -r . /usr/local/src/discord-bot-anchor-analytics\
 	fi
 	sudo cp -r . /usr/local/src/discord-bot-anchor-analytics
 	cd /usr/local/src/discord-bot-anchor-analytics
