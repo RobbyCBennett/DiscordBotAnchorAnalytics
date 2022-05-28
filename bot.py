@@ -308,6 +308,11 @@ async def before_get_analytics():
 	for _ in range(SECONDS_IN_A_WEEK):
 		if datetime.utcnow().strftime('%H:%M UTC %a') == WEEKLY_TIME:
 			return
+		else:
+			print('Current time:')
+			print(datetime.utcnow().strftime('%H:%M UTC %a'))
+			print('Target time:')
+			print(WEEKLY_TIME)
 
 		await asyncio.sleep(30)
 
@@ -321,7 +326,11 @@ async def on_message(message):
 	# Member mention
 	for member in message.mentions:
 		if member.id == DISCORD_BOT_ID:
-			await channel.send(randomPhrase())
+			content = lower(message.content())
+			if 'episode' in content or 'stat' in content or 'analytics' in content:
+				await get_analytics()
+			else:
+				await channel.send(randomPhrase())
 			return
 
 	# Role mention
