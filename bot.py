@@ -326,7 +326,7 @@ async def on_message(message):
 	# Member mention
 	for member in message.mentions:
 		if member.id == DISCORD_BOT_ID:
-			content = lower(message.content())
+			content = message.content.lower()
 			if 'episode' in content or 'stat' in content or 'analytics' in content:
 				await get_analytics()
 			else:
