@@ -1,4 +1,4 @@
- #! /usr/bin/python
+#! /usr/bin/python
 
 import asyncio
 import discord, aiohttp, os
