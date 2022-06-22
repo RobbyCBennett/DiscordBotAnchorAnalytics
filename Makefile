@@ -5,8 +5,8 @@ pip-exists:
 	@which pip > /dev/null
 
 install: python-exists pip-exists
-	sudo pip install --upgrade pip
-	sudo pip install python-dotenv aiohttp discord
+	pip install --upgrade pip
+	pip install python-dotenv aiohttp discord
 	@make update
 
 update:
