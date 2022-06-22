@@ -6,7 +6,7 @@ pip-exists:
 
 install: python-exists pip-exists
 	pip install --upgrade pip
-	pip install python-dotenv aiohttp discord
+	pip install python-dotenv discord
 	@make update
 
 update:
