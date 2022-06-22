@@ -5,8 +5,8 @@ pip-exists:
 	@which pip > /dev/null
 
 install: python-exists pip-exists
-	pip install --upgrade pip
-	pip install python-dotenv discord
+	sudo -H pip install --upgrade pip
+	sudo -H pip install python-dotenv discord
 	@make update
 
 update:
