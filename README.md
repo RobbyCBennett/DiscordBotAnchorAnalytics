@@ -54,7 +54,7 @@ sudo apt install python3 python3-pip
 
 ## Install & Run the Bot
 
-12. Install python dependencies, install in `/usr/local/src/discord-bot-anchor-analytics`, and make service
+12. Install python dependencies, install in `/usr/local/src/discord-bot-anchor-analytics`, make the service, and run it
 
 ```
 make install
