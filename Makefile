@@ -5,8 +5,7 @@ pip3-exists:
 	@which pip3 > /dev/null
 
 install: python3-exists pip3-exists
-	sudo -H pip install --upgrade pip3
-	sudo -H pip install python-dotenv discord
+	pip3 install --target=bin python-dotenv discord
 	@make update
 
 update:

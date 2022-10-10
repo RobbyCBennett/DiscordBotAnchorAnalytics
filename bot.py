@@ -1,5 +1,8 @@
 #! /usr/bin/python3
 
+import sys
+sys.path.insert(1, 'bin')
+
 import asyncio
 import discord, aiohttp, os
 from discord.ext import commands, tasks
@@ -26,7 +29,8 @@ HOURS_IN_A_WEEK = 168
 SECONDS_IN_A_WEEK = 604800
 
 # Objects for connections
-bot = commands.Bot(command_prefix='.')
+INTENTS = discord.Intents(message_content=True)
+bot = commands.Bot(command_prefix='.', intents=INTENTS)
 cookies = aiohttp.CookieJar()
 
 
