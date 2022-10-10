@@ -6,7 +6,7 @@ StartLimitIntervalSec=0
 [Service]
 Type=simple
 Restart=always
-ExecStart=python /usr/local/src/discord-bot-anchor-analytics/bot.py
+ExecStart=python3 /usr/local/src/discord-bot-anchor-analytics/bot.py
 
 [Install]
 WantedBy=multi-user.target

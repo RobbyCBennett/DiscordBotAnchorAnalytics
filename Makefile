@@ -1,11 +1,11 @@
-python-exists:
-	@which python > /dev/null
+python3-exists:
+	@which python3 > /dev/null
 
-pip-exists:
-	@which pip > /dev/null
+pip3-exists:
+	@which pip3 > /dev/null
 
-install: python-exists pip-exists
-	sudo -H pip install --upgrade pip
+install: python3-exists pip3-exists
+	sudo -H pip install --upgrade pip3
 	sudo -H pip install python-dotenv discord
 	@make update
 
