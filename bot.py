@@ -30,7 +30,7 @@ HOURS_IN_A_WEEK = 168
 SECONDS_IN_A_WEEK = 604800
 
 # Objects for connections
-INTENTS = discord.Intents(message_content=True)
+INTENTS = discord.Intents(message_content=True, messages=True)
 bot = commands.Bot(command_prefix='.', intents=INTENTS)
 cookies = aiohttp.CookieJar()
 
