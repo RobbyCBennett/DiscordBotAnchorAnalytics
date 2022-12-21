@@ -162,11 +162,12 @@ async def on_ready():
 	get_analytics.start()
 
 @tasks.loop(hours=HOURS_IN_A_WEEK)
-async def get_analytics():
+async def get_analytics(channel):
 
 	# Set up connection with Discord
 
-	channel = bot.get_channel(DISCORD_CHANNEL_ID)
+	if not channel:
+		channel = bot.get_channel(DISCORD_CHANNEL_ID)
 	if not channel:
 		print('Error with Discord channel id')
 		print(DISCORD_CHANNEL_ID)
@@ -206,7 +207,7 @@ async def get_analytics():
 		anchorWebStationId = str(body['user']['currentWebStationId'])
 
 
-		# Get statistics
+		# Get analytics
 
 		analytic = 'uniqueListeners'
 		task = 'Getting analytic: {}'.format(analytic)
@@ -328,7 +329,7 @@ async def on_message(message):
 		if member.id == DISCORD_BOT_ID:
 			content = message.content.lower()
 			if 'episode' in content or 'stat' in content or 'analytics' in content:
-				await get_analytics()
+				await get_analytics(channel)
 			else:
 				await channel.send(randomPhrase())
 			return
