@@ -38,6 +38,7 @@ sudo apt install python3 python3-pip
 
 7. Get a link to add your bot to the channel with OAuth2 > URL Generator.
    * Under `SCOPES` select `bot`.
+   * Under `GENERAL PERMISSIONS` select `Read Messages/View Channels`.
    * Under `BOT PERMISSIONS` select `Send Messages`.
 
 8. Send this link to someone in the Discord server who has permissions to add bots.

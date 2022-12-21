@@ -30,8 +30,8 @@ HOURS_IN_A_WEEK = 168
 SECONDS_IN_A_WEEK = 604800
 
 # Objects for connections
-INTENTS = discord.Intents(message_content=True, messages=True)
-bot = commands.Bot(command_prefix='.', intents=INTENTS)
+intents = discord.Intents(messages=True, message_content=True, value=True)
+bot = commands.Bot(command_prefix='.', intents=intents)
 cookies = aiohttp.CookieJar()
 
 
@@ -159,18 +159,22 @@ def stringOfTopEpisodes(stats):
 
 @bot.event
 async def on_ready():
+	channel = bot.get_channel(DISCORD_CHANNEL_ID)
+	if channel:
+		print('Connected to channel')
+	else:
+		print(f'Error with Discord channel id {DISCORD_CHANNEL_ID} or permissions')
 	get_analytics.start()
 
 @tasks.loop(hours=HOURS_IN_A_WEEK)
-async def get_analytics(channel):
+async def get_analytics(channel=None):
 
 	# Set up connection with Discord
 
 	if not channel:
 		channel = bot.get_channel(DISCORD_CHANNEL_ID)
 	if not channel:
-		print('Error with Discord channel id')
-		print(DISCORD_CHANNEL_ID)
+		print(f'Error with Discord channel id {DISCORD_CHANNEL_ID} or permissions')
 		return
 
 	async with aiohttp.ClientSession(cookie_jar=cookies) as session:
