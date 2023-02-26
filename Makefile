@@ -13,4 +13,4 @@ python3-exists:
 pip3-exists:
 	@which pip3 > /dev/null
 deps: python3-exists pip3-exists
-	pip3 install python-dotenv discord -t dep
+	pip3 install python-dotenv discord -t dep -U
