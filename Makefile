@@ -1,32 +1,36 @@
+# Installing & Updating
+install:
+	@make deps
+	@make reload
+	@make start
+	@make status
+update:
+	git pull
+	@make deps
+	@make reload
+	@make restart
+	@make status
+
+# Python Dependencies
 python3-exists:
 	@which python3 > /dev/null
-
 pip3-exists:
 	@which pip3 > /dev/null
+deps: python3-exists pip3-exists
+	pip3 install python-dotenv discord -t dep
 
-install: python3-exists pip3-exists
-	pip3 install --target=bin python-dotenv discord
-	@make update
-
-update:
-	sudo git pull
-	@if [ $$PWD != /usr/local/src/discord-bot-anchor-analytics ] ; then \
-		sudo cp -r . /usr/local/src/discord-bot-anchor-analytics ; \
-		cd /usr/local/src/discord-bot-anchor-analytics ; \
-	fi
-	sudo cp discord-bot-anchor-analytics.service /etc/systemd/system/discord-bot-anchor-analytics.service
-	sudo systemctl daemon-reload
-	sudo systemctl enable discord-bot-anchor-analytics
-	sudo systemctl start discord-bot-anchor-analytics
-
-status:
-	sudo systemctl status discord-bot-anchor-analytics
-
+# Daemon Service
+reload:
+	service discord-bot-anchor-analytics reload
+enable:
+	service discord-bot-anchor-analytics enable
+disable:
+	service discord-bot-anchor-analytics disable
 start:
-	sudo systemctl start discord-bot-anchor-analytics
-
+	service discord-bot-anchor-analytics start
 stop:
-	sudo systemctl stop discord-bot-anchor-analytics
-
+	service discord-bot-anchor-analytics stop
+status:
+	service discord-bot-anchor-analytics status
 restart:
-	sudo systemctl restart discord-bot-anchor-analytics
+	service discord-bot-anchor-analytics restart

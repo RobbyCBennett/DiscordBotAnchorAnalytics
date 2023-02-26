@@ -1,8 +1,7 @@
 #! /usr/bin/python3
 
-import os.path, sys
-BIN_DIR = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'bin')
-sys.path.insert(1, BIN_DIR)
+import sys
+sys.path.append('dep')
 
 import asyncio
 import discord, aiohttp, os
