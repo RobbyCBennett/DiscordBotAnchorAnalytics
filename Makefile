@@ -11,7 +11,8 @@ restart: start
 stop:
 	./discord-bot-anchor-analytics.sh stop
 enable:
-	cp discord-bot-anchor-analytics.sh /etc/network/if-up.d
+# cp discord-bot-anchor-analytics.sh /etc/network/if-up.d
+	echo That was really bad. Currently figuring this one out.
 disable:
 	rm /etc/network/if-up.d/discord-bot-anchor-analytics.sh
 
