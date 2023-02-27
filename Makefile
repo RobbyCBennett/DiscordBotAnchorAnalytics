@@ -13,16 +13,12 @@ stop: --service
 	service discord-bot-anchor-analytics stop
 enable: --service
 disable:
-	service discord-bot-anchor-analytics stop 2> /dev/null || true
+	@service discord-bot-anchor-analytics stop 2> /dev/null || true
 	@if ( command -v openrc 1> /dev/null ); then \
-		if [ ! -f /etc/init.d/discord-bot-anchor-analytics ]; then \
-			rm /etc/init.d/discord-bot-anchor-analytics; \
-		fi \
+		rm /etc/init.d/discord-bot-anchor-analytics; \
 	elif ( command -v systemd 1> /dev/null ); then \
-		if [ ! -f /etc/systemd/user/discord-bot-anchor-analytics.service ]; then \
-			rm /etc/systemd/user/discord-bot-anchor-analytics.service; \
-			systemctl daemon-reload; \
-		fi \
+		rm /etc/systemd/user/discord-bot-anchor-analytics.service; \
+		systemctl daemon-reload; \
 	else \
 		echo 'Platform not supported'; \
 		exit 1; \
