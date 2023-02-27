@@ -21,7 +21,7 @@ if [ "$1" = stop ]; then
 fi
 
 # Start process
-if [ $(whoami) = taco ]; then
+if [ $(whoami) != $USER ]; then
 	su $USER
 fi
 cd ~/$DIR
