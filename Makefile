@@ -1,8 +1,8 @@
 # Public
 
 # Installing & Updating
-install: --deps start
-update: --pull --deps restart
+install: --deps
+update: --pull --deps
 
 # Daemon
 start: --service
