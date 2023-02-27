@@ -10,7 +10,7 @@ Discord bots are run on a personal computer of your choice with internet access.
 
 1. [Download & unzip](https://github.com/RobbyCBennett/DiscordBotAnchorAnalytics/archive/refs/heads/master.zip) or clone [this repository](https://github.com/RobbyCBennett/DiscordBotAnchorAnalytics).
 ```bash
-git clone git@github.com:RobbyCBennett/DiscordBotAnchorAnalytics.git
+git clone https://github.com/RobbyCBennett/DiscordBotAnchorAnalytics.git
 ```
 
 2. Inside of this folder, copy the `.env.example` and name it `.env`
