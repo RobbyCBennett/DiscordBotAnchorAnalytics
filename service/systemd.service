@@ -1,0 +1,19 @@
+# Config
+USER='discord'
+DIR='anchorAnalytics'
+
+[Unit]
+Description=Discord Bot - Anchor Analytics
+After=network.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+Restart=always
+User=$USER
+Group=$USER
+RuntimeDirectory=/home/$USER/$DIR
+ExecStart=python3 bot.py
+
+[Install]
+WantedBy=multi-user.target
