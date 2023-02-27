@@ -16,6 +16,3 @@ command_background='true'
 
 command='python3'
 command_args="/home/$USER/$DIR/bot.py"
-
-output_log="/home/$USER/$DIR/log.log"
-error_log="/home/$USER/$DIR/err.err"
