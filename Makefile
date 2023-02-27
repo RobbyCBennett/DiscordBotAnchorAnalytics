@@ -40,6 +40,7 @@ help:
 		ln -s service/systemd.service /etc/systemd/user/discord-bot-anchor-analytics.service; \
 	else \
 		echo 'Platform not supported'; \
+		exit 1; \
 	fi
 
 # Update repository
