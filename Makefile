@@ -28,17 +28,17 @@ disable:
 
 help:
 	@echo
-	@echo 'make:         install'
-	@echo 'make install: install'
-	@echo 'make update:  update'
+	@echo 'make          install'
+	@echo 'make install  install'
+	@echo 'make update   update'
 	@echo
-	@echo 'make status:  get process status'
-	@echo 'make start:   stop process if running and start'
-	@echo 'make restart: stop process if running and start'
-	@echo 'make stop:    stop process if running'
+	@echo 'make status   get process status'
+	@echo 'make start    stop process if running and start'
+	@echo 'make restart  stop process if running and start'
+	@echo 'make stop     stop process if running'
 	@echo
-	@echo 'make enable:  enable process to run on system startup'
-	@echo 'make disble:  disable process from running on system startup'
+	@echo 'make enable   enable process to run on system startup'
+	@echo 'make disble   disable process from running on system startup'
 
 
 
