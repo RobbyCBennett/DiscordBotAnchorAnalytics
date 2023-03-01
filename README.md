@@ -8,7 +8,7 @@ Discord bots are run on a personal computer of your choice with internet access.
 
 ## Get the Code
 
-1. [Download & unzip](https://github.com/RobbyCBennett/DiscordBotAnchorAnalytics/archive/refs/heads/master.zip) or clone [this repository](https://github.com/RobbyCBennett/DiscordBotAnchorAnalytics).
+1. [Download & unzip](https://github.com/RobbyCBennett/DiscordBotAnchorAnalytics/archive/refs/heads/main.zip) or clone [this repository](https://github.com/RobbyCBennett/DiscordBotAnchorAnalytics).
 ```bash
 git clone https://github.com/RobbyCBennett/DiscordBotAnchorAnalytics.git
 ```
