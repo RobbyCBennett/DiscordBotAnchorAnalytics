@@ -1,19 +1,29 @@
-# Config
-USER='discord'
-DIR='anchorAnalytics'
+USER=robby
+
+DIR=DiscordBotAnchorAnalytics
+DIR=/home/$USER/$DIR
+
+EXEC=bot.py
+EXEC=$DIR/$EXEC
+
+ID=discord-bot-anchor-analytics
+ID=/run/$ID.pid
+
+COMMAND='start-stop-daemon'
+COMMAND_ARGS="\
+--start \
+--chuid $USER \
+--group $USER \
+--chdir $DIR \
+--make-pidfile \
+--remove-pidfile \
+--pidfile $ID \
+--background \
+--output $DIR/out.txt \
+--exec $EXEC"
 
 [Unit]
-Description=Discord Bot - Anchor Analytics
 After=network.target
-StartLimitIntervalSec=0
 
 [Service]
-Type=simple
-Restart=always
-User=$USER
-Group=$USER
-RuntimeDirectory=/home/$USER/$DIR
-ExecStart=python3 bot.py
-
-[Install]
-WantedBy=multi-user.target
+ExecStart=$COMMAND $COMMAND_ARGS

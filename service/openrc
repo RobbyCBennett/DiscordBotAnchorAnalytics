@@ -1,18 +1,29 @@
 #!/sbin/openrc-run
 
-# Config
-USER='discord'
-DIR='anchorAnalytics'
+USER=discord
+
+DIR=anchorAnalytics
+DIR=/home/$USER/$DIR
+
+EXEC=bot.py
+EXEC=$DIR/$EXEC
+
+ID=discord-bot-anchor-analytics
+ID=/run/$ID.pid
+
+command='start-stop-daemon'
+command_args="\
+--start \
+--user $USER \
+--group $USER \
+--chdir $DIR \
+--make-pidfile \
+--pidfile $ID \
+--background \
+--stdout $DIR/out.txt \
+--stderr $DIR/err.txt \
+--exec $EXEC"
 
 depend() {
     need net
 }
-
-procname='discord-bot-anchor-analytics'
-pidfile="/run/$procname.pid"
-
-command_user="$USER:$USER"
-command_background='true'
-
-command='python3'
-command_args="/home/$USER/$DIR/bot.py"
