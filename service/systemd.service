@@ -29,6 +29,7 @@ STOP=" \
 
 [Unit]
 After=network.target
+Description='Discord Bot - Anchor Analytics'
 
 [Service]
 ExecStart=$SUPERVISOR $START
