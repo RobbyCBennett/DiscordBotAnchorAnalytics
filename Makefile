@@ -48,11 +48,11 @@ help:
 --service:
 	@if ( command -v openrc 1> /dev/null ); then \
 		if [ ! -f /etc/init.d/discord-bot-anchor-analytics ]; then \
-			ln -s `readlink -f service/openrc` /etc/init.d/discord-bot-anchor-analytics; \
+			ln -sf `readlink -f service/openrc` /etc/init.d/discord-bot-anchor-analytics; \
 		fi \
 	elif ( command -v systemd 1> /dev/null ); then \
 		if [ ! -f /etc/systemd/user/discord-bot-anchor-analytics.service ]; then \
-			ln -s `readlink -f service/systemd.service` /etc/systemd/user/discord-bot-anchor-analytics.service; \
+			ln -sf `readlink -f service/systemd.service` /etc/systemd/user/discord-bot-anchor-analytics.service; \
 			systemctl daemon-reload; \
 		fi \
 	else \

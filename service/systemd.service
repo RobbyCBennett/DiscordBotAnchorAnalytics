@@ -9,21 +9,27 @@ EXEC=$DIR/$EXEC
 ID=discord-bot-anchor-analytics
 ID=/run/$ID.pid
 
-COMMAND='start-stop-daemon'
-COMMAND_ARGS="\
---start \
---chuid $USER \
---group $USER \
---chdir $DIR \
---make-pidfile \
---remove-pidfile \
---pidfile $ID \
---background \
---output $DIR/out.txt \
---exec $EXEC"
+SUPERVISOR=start-stop-daemon
+
+START=" \
+	--start \
+	--chuid $USER \
+	--group $USER \
+	--chdir $DIR \
+	--make-pidfile \
+	--remove-pidfile \
+	--pidfile $ID \
+	--background \
+	--output $DIR/out.txt \
+	--exec $EXEC"
+
+STOP=" \
+	--stop \
+	--pidfile $ID"
 
 [Unit]
 After=network.target
 
 [Service]
-ExecStart=$COMMAND $COMMAND_ARGS
+ExecStart=$SUPERVISOR $START
+ExecStop=$SUPERVISOR $STOP
