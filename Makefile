@@ -5,13 +5,13 @@ install: --deps
 update: --pull --deps
 
 # Daemon
-status: --service
+status:
 	service discord-bot-anchor-analytics status
 start: --service
 	service discord-bot-anchor-analytics start
 restart: --service
 	service discord-bot-anchor-analytics restart
-stop: --service
+stop:
 	service discord-bot-anchor-analytics stop
 enable: --service
 disable:
@@ -28,9 +28,9 @@ disable:
 
 help:
 	@echo
-	@echo 'make:         install and start'
-	@echo 'make install: install and start'
-	@echo 'make update:  update and restart'
+	@echo 'make:         install'
+	@echo 'make install: install'
+	@echo 'make update:  update'
 	@echo
 	@echo 'make status:  get process status'
 	@echo 'make start:   stop process if running and start'
