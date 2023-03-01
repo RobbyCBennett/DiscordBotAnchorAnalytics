@@ -1,6 +1,6 @@
-USER=robby
+USER=discord
 
-DIR=DiscordBotAnchorAnalytics
+DIR=anchorAnalytics
 DIR=/home/$USER/$DIR
 
 EXEC=bot.py
