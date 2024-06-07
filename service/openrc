@@ -1,46 +1,15 @@
 #!/sbin/openrc-run
 
-USER=discord
+USER='discord'
 
-DIR=anchorAnalytics
-DIR=/home/$USER/$DIR
-
-EXEC=bot.py
-EXEC=$DIR/$EXEC
-
-ID=discord-bot-anchor-analytics
-ID=/run/$ID.pid
-
-SUPERVISOR=start-stop-daemon
-
-START=" \
-	--start \
-	--user $USER \
-	--group $USER \
-	--chdir $DIR \
-	--make-pidfile \
-	--pidfile $ID \
-	--background \
-	--stdout $DIR/out.txt \
-	--stderr $DIR/err.txt \
-	--exec $EXEC"
-
-STOP=" \
-	--stop \
-	--pidfile $ID"
-
-description='Discord Bot - Anchor Analytics'
+command='/usr/bin/env'
+command_args="PYTHONPATH=/home/$USER/anchorAnalytics/dep /usr/bin/python3 /home/$USER/anchorAnalytics/bot.py"
+command_user="$USER:$USER"
+description='Discord Anchor'
+supervisor='supervise-daemon'
 
 depend() {
 	need net
 	after firewall
 	use dns
-}
-
-start() {
-	$SUPERVISOR $START
-}
-
-stop() {
-	$SUPERVISOR $STOP
 }
