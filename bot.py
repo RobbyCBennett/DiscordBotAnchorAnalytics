@@ -7,7 +7,7 @@ import asyncio
 import discord, aiohttp, os
 from discord.ext import commands, tasks
 from dotenv import load_dotenv
-from datetime import datetime
+from datetime import datetime, timezone
 from phrases import phrases
 from random import randint
 
@@ -315,7 +315,7 @@ async def get_analytics(channel=None):
 @get_analytics.before_loop
 async def before_get_analytics():
 	for _ in range(SECONDS_IN_A_WEEK):
-		if datetime.utcnow().strftime('%H:%M UTC %a') == WEEKLY_TIME:
+		if datetime.now(timezone.utc).strftime('%H:%M UTC %a') == WEEKLY_TIME:
 			return
 
 		await asyncio.sleep(30)
